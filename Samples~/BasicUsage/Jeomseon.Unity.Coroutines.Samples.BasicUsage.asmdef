@@ -1,0 +1,6 @@
+{
+  "name": "Jeomseon.Unity.Coroutines.Samples.BasicUsage",
+  "references": [
+    "Jeomseon.Unity.Coroutines"
+  ]
+}
