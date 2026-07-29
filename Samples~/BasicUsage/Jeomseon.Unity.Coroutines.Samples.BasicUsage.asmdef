@@ -1,5 +1,6 @@
 {
   "name": "Jeomseon.Unity.Coroutines.Samples.BasicUsage",
+  "rootNamespace": "Jeomseon.Samples.Coroutines",
   "references": [
     "Jeomseon.Unity.Coroutines"
   ]

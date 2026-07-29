@@ -1,4 +1,4 @@
-namespace Jeomseon.PackageNotes
+namespace Jeomseon.Coroutine
 {
     internal static class PackageArchitectureNotes
     {
