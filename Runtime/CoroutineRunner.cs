@@ -9,8 +9,14 @@ namespace Jeomseon.Coroutine
 
     public sealed class CoroutineRunner : Singleton<CoroutineRunner>
     {
+        /* TODO(P0-02, lifecycle): Singleton 인스턴스가 Domain Reload 비활성화 상태에서
+         * Play Mode 재진입 후에도 이전 코루틴 상태를 유지하지 않는지 검증합니다.
+         */
         protected override void Init() {}
 
+        /* TODO(P2-01, api): Unity 6 Awaitable과 코루틴의 취소·예외 전달 차이를 비교하고,
+         * 지원 버전별로 비동기 API로 대체 가능한 호출 경로를 제공합니다.
+         */
         public Coroutine DoCallWaitForOneFrame(Action action)
             => CoroutineExtensions.DoCallWaitForOneFrame(this, action);
 
