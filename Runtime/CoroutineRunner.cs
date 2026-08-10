@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Jeomseon.Singleton;
@@ -7,50 +8,56 @@ namespace Jeomseon.Coroutine
 {
     using Coroutine = UnityEngine.Coroutine;
 
-    public sealed class CoroutineRunner : Singleton<CoroutineRunner>
+    public sealed class CoroutineRunner : Singleton<CoroutineRunner>, ICoroutineService
     {
-        /* TODO(P0-02, lifecycle): Singleton 인스턴스가 Domain Reload 비활성화 상태에서
-         * Play Mode 재진입 후에도 이전 코루틴 상태를 유지하지 않는지 검증합니다.
-         */
-        protected override void Init() {}
+        private CoroutineService _service;
 
-        /* TODO(P2-01, api): Unity 6 Awaitable과 코루틴의 취소·예외 전달 차이를 비교하고,
-         * 지원 버전별로 비동기 API로 대체 가능한 호출 경로를 제공합니다.
-         */
-        public Coroutine DoCallWaitForOneFrame(Action action)
-            => CoroutineExtensions.DoCallWaitForOneFrame(this, action);
+        protected override void Init() => _service = new CoroutineService(this);
 
-        public Coroutine DoCallWaitForSeconds(float delayTime, Action action)
-            => CoroutineExtensions.DoCallWaitForSeconds(this, delayTime, action);
+        public CoroutineOperation RunOperation(IEnumerator routine) => _service.RunOperation(routine);
 
-        public Coroutine DoCallRoofCoroutine<T>(Func<bool> action) where T : YieldInstruction
-            => CoroutineExtensions.DoCallRoofCoroutine<T>(this, action);
+        public Coroutine Run(IEnumerator routine) => _service.Run(routine);
 
-        public Coroutine DoCallRoofCoroutine<T>(Func<bool> action, Action init) where T : YieldInstruction
-            => CoroutineExtensions.DoCallRoofCoroutine<T>(this, action, init);
+        public void Stop(Coroutine coroutine) => _service.Stop(coroutine);
 
-        public Coroutine DoCallRoofCoroutine<T>(Func<bool> action, Action init, Action finish) where T : YieldInstruction
-            => CoroutineExtensions.DoCallRoofCoroutine<T>(this, action, init, finish);
+        public void StopAll() => _service.StopAll();
 
-        public Coroutine DoCallRoofCoroutineFinish<T>(Func<bool> action, Action finish) where T : YieldInstruction
-            => CoroutineExtensions.DoCallRoofCoroutineFinish<T>(this, action, finish);
+        private void OnDestroy() => StopAll();
 
-        public Coroutine WaitCompletedConditions(Func<bool> match, Action callback)
-            => CoroutineExtensions.WaitCompletedConditions(this, match, callback);
+        public Coroutine InvokeNextFrame(Action callback)
+            => CoroutineExtensions.InvokeNextFrame(this, callback);
 
-        public Coroutine WaitCompletedAsync(Action asyncAction, Action callback)
-            => CoroutineExtensions.WaitCompletedAsync(this, asyncAction, callback);
+        public Coroutine InvokeAfterSeconds(float delay, Action callback)
+            => CoroutineExtensions.InvokeAfterSeconds(this, delay, callback);
 
-        public Coroutine WaitCompletedAsync<T>(Func<T> asycnAction, Action<T> callback)
-            => CoroutineExtensions.WaitCompletedAsync(this, asycnAction, callback);
+        public Coroutine RepeatWhile<TYieldInstruction>(Func<bool> continueCondition) where TYieldInstruction : YieldInstruction
+            => CoroutineExtensions.RepeatWhile<TYieldInstruction>(this, continueCondition);
 
-        public Coroutine ProgressFromEnumerable<T>(IEnumerable<T> objects, Action<T> callback)
-            => CoroutineExtensions.ProgressFromEnumerable(this, objects, callback);
+        public Coroutine RepeatWhile<TYieldInstruction>(Func<bool> continueCondition, Action onStarted) where TYieldInstruction : YieldInstruction
+            => CoroutineExtensions.RepeatWhile<TYieldInstruction>(this, continueCondition, onStarted);
 
-        public Coroutine GetWaitComponent<T>(MonoBehaviour monoBehaviour, Action<T> callback) where T : Component
-            => monoBehaviour.GetWaitComponent(callback);
+        public Coroutine RepeatWhile<TYieldInstruction>(Func<bool> continueCondition, Action onStarted, Action onFinished) where TYieldInstruction : YieldInstruction
+            => CoroutineExtensions.RepeatWhile<TYieldInstruction>(this, continueCondition, onStarted, onFinished);
 
-        public Coroutine GetWaitComponent<T>(MonoBehaviour monoBehaviour, float delayTime, Action<T> callback) where T : Component
-            => monoBehaviour.GetWaitComponent(delayTime, callback);
+        public Coroutine RepeatWhileWithCompletion<TYieldInstruction>(Func<bool> continueCondition, Action onFinished) where TYieldInstruction : YieldInstruction
+            => CoroutineExtensions.RepeatWhileWithCompletion<TYieldInstruction>(this, continueCondition, onFinished);
+
+        public Coroutine InvokeWhen(Func<bool> predicate, Action callback)
+            => CoroutineExtensions.InvokeWhen(this, predicate, callback);
+
+        public Coroutine RunInBackground(Action backgroundWork, Action callback)
+            => CoroutineExtensions.RunInBackground(this, backgroundWork, callback);
+
+        public Coroutine RunInBackground<T>(Func<T> backgroundWork, Action<T> callback)
+            => CoroutineExtensions.RunInBackground(this, backgroundWork, callback);
+
+        public Coroutine ProcessEachFrame<T>(IEnumerable<T> items, Action<T> callback)
+            => CoroutineExtensions.ProcessEachFrame(this, items, callback);
+
+        public Coroutine GetComponentWithTimeout<T>(MonoBehaviour host, Action<T> callback) where T : Component
+            => host.GetComponentWithTimeout(callback);
+
+        public Coroutine GetComponentWithTimeout<T>(MonoBehaviour host, float timeout, Action<T> callback) where T : Component
+            => host.GetComponentWithTimeout(timeout, callback);
     }
 }
