@@ -1,0 +1,16 @@
+{
+  "name": "Jeomseon.Unity.Coroutines.PlayModeTests",
+  "rootNamespace": "Jeomseon.Tests",
+  "references": [
+    "Jeomseon.Unity.Core",
+    "Jeomseon.Unity.Coroutines"
+  ],
+  "includePlatforms": [],
+  "excludePlatforms": [
+    "Editor"
+  ],
+  "autoReferenced": false,
+  "optionalUnityReferences": [
+    "TestAssemblies"
+  ]
+}

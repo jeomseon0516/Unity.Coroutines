@@ -2,6 +2,7 @@
   "name": "Jeomseon.Unity.Coroutines",
   "rootNamespace": "Jeomseon.Coroutine",
   "references": [
+    "Jeomseon.Unity.Core",
     "Jeomseon.Unity.Singleton"
   ],
   "autoReferenced": true,
