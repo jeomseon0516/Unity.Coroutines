@@ -1,0 +1,12 @@
+{
+  "name": "Jeomseon.Unity.Coroutines.Editor",
+  "rootNamespace": "Jeomseon.Coroutine.Editor",
+  "references": [
+    "Jeomseon.Unity.Coroutines"
+  ],
+  "includePlatforms": [
+    "Editor"
+  ],
+  "autoReferenced": true,
+  "noEngineReferences": false
+}

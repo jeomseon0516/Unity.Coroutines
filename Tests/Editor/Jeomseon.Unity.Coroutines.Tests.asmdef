@@ -1,0 +1,14 @@
+{
+  "name": "Jeomseon.Unity.Coroutines.Tests",
+  "rootNamespace": "Jeomseon.Tests",
+  "references": [
+    "Jeomseon.Unity.Coroutines"
+  ],
+  "includePlatforms": [
+    "Editor"
+  ],
+  "autoReferenced": false,
+  "optionalUnityReferences": [
+    "TestAssemblies"
+  ]
+}
