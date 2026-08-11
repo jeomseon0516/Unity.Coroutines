@@ -35,8 +35,8 @@ namespace Jeomseon.Coroutine.Editor
             {
                 settings ??= CreateSettingsAsset();
                 SerializedObject serializedSettings = new SerializedObject(settings);
-                serializedSettings.FindProperty("_isWaitForSecondsCacheLimitEnabled").boolValue = isLimitEnabled;
-                serializedSettings.FindProperty("_maxCachedWaitForSecondsCount").intValue = Mathf.Max(1, maxCount);
+                serializedSettings.FindProperty("isWaitForSecondsCacheLimitEnabled").boolValue = isLimitEnabled;
+                serializedSettings.FindProperty("maxCachedWaitForSecondsCount").intValue = Mathf.Max(1, maxCount);
                 serializedSettings.ApplyModifiedProperties();
                 CoroutineHelper.ResetWaitForSecondsCache();
             }

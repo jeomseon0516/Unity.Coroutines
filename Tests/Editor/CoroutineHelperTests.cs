@@ -62,9 +62,9 @@ namespace Jeomseon.Tests
         private static void SetCacheSettings(bool isLimitEnabled, int maxCount)
         {
             var settings = ScriptableObject.CreateInstance<CoroutineCacheSettings>();
-            typeof(CoroutineCacheSettings).GetField("_isWaitForSecondsCacheLimitEnabled", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic)
+            typeof(CoroutineCacheSettings).GetField("isWaitForSecondsCacheLimitEnabled", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic)
                 .SetValue(settings, isLimitEnabled);
-            typeof(CoroutineCacheSettings).GetField("_maxCachedWaitForSecondsCount", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic)
+            typeof(CoroutineCacheSettings).GetField("maxCachedWaitForSecondsCount", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic)
                 .SetValue(settings, maxCount);
             typeof(CoroutineHelper).GetField("_cacheSettings", System.Reflection.BindingFlags.Static | System.Reflection.BindingFlags.NonPublic)
                 .SetValue(null, settings);
