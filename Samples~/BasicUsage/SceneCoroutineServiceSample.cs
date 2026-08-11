@@ -2,13 +2,14 @@ using System;
 using System.Collections;
 using Jeomseon.Coroutine;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Jeomseon.Samples.Coroutines
 {
     public sealed class SceneCoroutineServiceSample : MonoBehaviour
     {
-        [SerializeField, Min(0f)] private float _delay = 2f;
-        [SerializeField] private bool _destroyHostBeforeCompletion;
+        [SerializeField, Min(0f), FormerlySerializedAs("_delay")] private float delay = 2f;
+        [SerializeField, FormerlySerializedAs("_destroyHostBeforeCompletion")] private bool destroyHostBeforeCompletion;
 
         private ICoroutineService _coroutines;
 
@@ -28,7 +29,7 @@ namespace Jeomseon.Samples.Coroutines
             operation.Completed += completed =>
                 Debug.Log($"호스트 수명 CoroutineService 작업 상태: {completed.Status}");
 
-            if (_destroyHostBeforeCompletion && _delay > 0f)
+            if (destroyHostBeforeCompletion && delay > 0f)
             {
                 StartCoroutine(DestroyHostBeforeCompletion());
             }
@@ -36,12 +37,12 @@ namespace Jeomseon.Samples.Coroutines
 
         private IEnumerator WaitForDelay()
         {
-            yield return new WaitForSeconds(_delay);
+            yield return new WaitForSeconds(delay);
         }
 
         private IEnumerator DestroyHostBeforeCompletion()
         {
-            yield return new WaitForSeconds(_delay * 0.5f);
+            yield return new WaitForSeconds(delay * 0.5f);
             Destroy(gameObject);
         }
     }
