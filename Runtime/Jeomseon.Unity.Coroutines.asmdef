@@ -1,6 +1,6 @@
 {
   "name": "Jeomseon.Unity.Coroutines",
-  "rootNamespace": "Jeomseon.Coroutine",
+  "rootNamespace": "Jeomseon.Unity.Coroutines",
   "references": [
     "Jeomseon.Unity.Core",
     "Jeomseon.Unity.Singleton"

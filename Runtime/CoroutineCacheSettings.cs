@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.Serialization;
 
-namespace Jeomseon.Coroutine
+namespace Jeomseon.Unity.Coroutines
 {
     public sealed class CoroutineCacheSettings : ScriptableObject
     {

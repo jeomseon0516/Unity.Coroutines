@@ -1,5 +1,5 @@
 using System.Collections;
-using Jeomseon.Coroutine;
+using Jeomseon.Unity.Coroutines;
 using UnityEngine;
 
 namespace Jeomseon.Samples.Coroutines

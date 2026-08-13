@@ -1,4 +1,4 @@
-using Jeomseon.Coroutine;
+using Jeomseon.Unity.Coroutines;
 using UnityEngine;
 using UnityEngine.Serialization;
 

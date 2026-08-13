@@ -1,8 +1,8 @@
 using System;
 using System.Threading;
-using Jeomseon.Unity.Operations;
+using Jeomseon.Unity.Core.Operations;
 
-namespace Jeomseon.Coroutine
+namespace Jeomseon.Unity.Coroutines
 {
     /// <summary>Coroutine 실행의 종료 상태와 취소를 제공하는 핸들입니다.</summary>
     public sealed class CoroutineOperation : IManagedOperation
