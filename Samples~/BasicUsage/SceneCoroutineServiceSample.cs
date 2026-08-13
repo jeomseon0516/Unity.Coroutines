@@ -1,6 +1,6 @@
 using System;
 using System.Collections;
-using Jeomseon.Coroutine;
+using Jeomseon.Unity.Coroutines;
 using UnityEngine;
 using UnityEngine.Serialization;
 

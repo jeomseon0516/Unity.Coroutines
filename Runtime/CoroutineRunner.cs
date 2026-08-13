@@ -2,9 +2,9 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Jeomseon.Singleton;
+using Jeomseon.Unity.Singleton;
 
-namespace Jeomseon.Coroutine
+namespace Jeomseon.Unity.Coroutines
 {
     using Coroutine = UnityEngine.Coroutine;
 

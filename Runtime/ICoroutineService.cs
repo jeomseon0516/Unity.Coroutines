@@ -1,6 +1,6 @@
 using System.Collections;
 
-namespace Jeomseon.Coroutine
+namespace Jeomseon.Unity.Coroutines
 {
     public interface ICoroutineService
     {

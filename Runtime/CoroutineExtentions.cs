@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
 
-namespace Jeomseon.Coroutine
+namespace Jeomseon.Unity.Coroutines
 {
     using Coroutine = UnityEngine.Coroutine;
 
