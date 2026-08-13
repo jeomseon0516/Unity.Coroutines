@@ -1,6 +1,6 @@
 using System.Collections;
-using Jeomseon.Coroutine;
-using Jeomseon.Unity.Operations;
+using Jeomseon.Unity.Coroutines;
+using Jeomseon.Unity.Core.Operations;
 using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.SceneManagement;

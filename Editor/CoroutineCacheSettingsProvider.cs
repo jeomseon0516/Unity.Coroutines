@@ -1,7 +1,7 @@
 using UnityEditor;
 using UnityEngine;
 
-namespace Jeomseon.Coroutine.Editor
+namespace Jeomseon.Unity.Coroutines.Editor
 {
     internal static class CoroutineCacheSettingsProvider
     {

@@ -1,6 +1,6 @@
 {
   "name": "Jeomseon.Unity.Coroutines.Editor",
-  "rootNamespace": "Jeomseon.Coroutine.Editor",
+  "rootNamespace": "Jeomseon.Unity.Coroutines",
   "references": [
     "Jeomseon.Unity.Coroutines"
   ],
