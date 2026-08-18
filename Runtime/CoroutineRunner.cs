@@ -6,8 +6,6 @@ using Jeomseon.Unity.Singleton;
 
 namespace Jeomseon.Unity.Coroutines
 {
-    using Coroutine = UnityEngine.Coroutine;
-
     public sealed class CoroutineRunner : Singleton<CoroutineRunner>, ICoroutineService
     {
         private CoroutineService _service;
