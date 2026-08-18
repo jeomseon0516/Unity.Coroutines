@@ -12,7 +12,7 @@ namespace Jeomseon.Unity.Coroutines
     {
         private CoroutineService _service;
 
-        protected override void Init() => _service = new CoroutineService(this);
+        protected override void OnSingletonInitialize() => _service = new CoroutineService(this);
 
         public CoroutineOperation RunOperation(IEnumerator routine) => _service.RunOperation(routine);
 
@@ -22,7 +22,7 @@ namespace Jeomseon.Unity.Coroutines
 
         public void StopAll() => _service.StopAll();
 
-        private void OnDestroy() => StopAll();
+        protected override void OnSingletonDispose() => StopAll();
 
         public Coroutine InvokeNextFrame(Action callback)
             => CoroutineExtensions.InvokeNextFrame(this, callback);
