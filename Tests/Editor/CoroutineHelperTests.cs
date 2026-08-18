@@ -6,11 +6,18 @@ namespace Jeomseon.Tests
 {
     public sealed class CoroutineHelperTests
     {
+        private CoroutineCacheSettings _settings;
+
         [SetUp]
         [TearDown]
         public void ResetCache()
         {
             CoroutineHelper.ResetWaitForSecondsCache();
+            if (_settings != null)
+            {
+                Object.DestroyImmediate(_settings);
+                _settings = null;
+            }
         }
 
         [Test]
@@ -59,15 +66,10 @@ namespace Jeomseon.Tests
             Assert.That(CoroutineHelper.CachedWaitForSecondsCount, Is.Zero);
         }
 
-        private static void SetCacheSettings(bool isLimitEnabled, int maxCount)
+        private void SetCacheSettings(bool isLimitEnabled, int maxCount)
         {
-            var settings = ScriptableObject.CreateInstance<CoroutineCacheSettings>();
-            typeof(CoroutineCacheSettings).GetField("isWaitForSecondsCacheLimitEnabled", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic)
-                .SetValue(settings, isLimitEnabled);
-            typeof(CoroutineCacheSettings).GetField("maxCachedWaitForSecondsCount", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic)
-                .SetValue(settings, maxCount);
-            typeof(CoroutineHelper).GetField("_cacheSettings", System.Reflection.BindingFlags.Static | System.Reflection.BindingFlags.NonPublic)
-                .SetValue(null, settings);
+            _settings = CoroutineCacheSettings.Create(isLimitEnabled, maxCount);
+            CoroutineHelper.ConfigureWaitForSecondsCache(_settings);
         }
     }
 }
