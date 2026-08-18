@@ -29,6 +29,12 @@ namespace Jeomseon.Unity.Coroutines
 
         internal static int CachedWaitForSecondsCount => _waitForSecondsDic.Count;
 
+        internal static void ConfigureWaitForSecondsCache(CoroutineCacheSettings settings)
+        {
+            _waitForSecondsDic.Clear();
+            _cacheSettings = settings;
+        }
+
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
         internal static void ResetWaitForSecondsCache()
         {
