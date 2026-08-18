@@ -15,6 +15,16 @@ namespace Jeomseon.Unity.Coroutines
         public bool IsWaitForSecondsCacheLimitEnabled => isWaitForSecondsCacheLimitEnabled;
         public int MaxCachedWaitForSecondsCount => maxCachedWaitForSecondsCount;
 
+        internal static CoroutineCacheSettings Create(
+            bool isCacheLimitEnabled,
+            int maxCachedCount)
+        {
+            var settings = CreateInstance<CoroutineCacheSettings>();
+            settings.isWaitForSecondsCacheLimitEnabled = isCacheLimitEnabled;
+            settings.maxCachedWaitForSecondsCount = maxCachedCount;
+            return settings;
+        }
+
         internal static CoroutineCacheSettings Load() => Resources.Load<CoroutineCacheSettings>(ResourcePath);
     }
 }
