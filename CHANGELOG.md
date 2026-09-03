@@ -1,6 +1,6 @@
 # 변경 기록
 
-## [Unreleased]
+## [0.4.0] - 2026-09-03
 
 - Unity 최소 버전을 `6000.6.0f1`로 올렸습니다.
 - `CoroutineRunner`가 사용하는 `OnSingletonInitialize()`/`OnSingletonDispose()` 수명 계약에 맞춰
