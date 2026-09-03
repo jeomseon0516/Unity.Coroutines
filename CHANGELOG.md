@@ -1,5 +1,15 @@
 # 변경 기록
 
+## [Unreleased]
+
+- Unity 최소 버전을 `6000.6.0f1`로 올렸습니다.
+- `CoroutineRunner`가 사용하는 `OnSingletonInitialize()`/`OnSingletonDispose()` 수명 계약에 맞춰
+  `com.jeomseon.unity.singleton` 최소 의존성을 `0.3.0`으로 올렸습니다.
+- Test asmdef에 `Jeomseon.Unity.Singleton` 직접 참조를 추가하고, PlayMode 테스트를 Editor에서
+  제외하던 잘못된 플랫폼 설정을 제거해 Test Runner가 테스트를 발견하도록 수정했습니다.
+- 선택 사항인 Sample Import 여부만 검사하고 Coroutines 기능 계약을 검증하지 않던
+  `SampleAssetsTests`를 제거했습니다.
+
 ## [0.3.0] - 2026-08-13
 
 - **(Breaking)** 네임스페이스를 `Jeomseon.Coroutine`(단수)/`Jeomseon.Coroutine.Editor` →

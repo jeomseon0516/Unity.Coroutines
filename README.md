@@ -2,6 +2,8 @@
 
 Coroutine runner and coroutine handle utilities for Unity.
 
+요구 버전: Unity 6000.6.0f1 이상, `com.jeomseon.unity.singleton` 0.3.0 이상
+
 ## 설치
 
 OpenUPM 등록 전에는 Package Manager의 **Add package from git URL**에서 다음 주소를 사용합니다.

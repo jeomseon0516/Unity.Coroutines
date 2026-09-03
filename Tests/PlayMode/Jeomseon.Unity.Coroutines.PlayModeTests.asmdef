@@ -3,12 +3,11 @@
   "rootNamespace": "Jeomseon.Tests",
   "references": [
     "Jeomseon.Unity.Core",
-    "Jeomseon.Unity.Coroutines"
+    "Jeomseon.Unity.Coroutines",
+    "Jeomseon.Unity.Singleton"
   ],
   "includePlatforms": [],
-  "excludePlatforms": [
-    "Editor"
-  ],
+  "excludePlatforms": [],
   "autoReferenced": false,
   "optionalUnityReferences": [
     "TestAssemblies"
