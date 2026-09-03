@@ -27,7 +27,7 @@
 5. **P2-02 — API 명명 정리** ✅
    - `DoCallRoofCoroutine`, `asycnAction` 등 오탈자와 의도가 불명확한 이름을 동사 중심 API로 교체하고 이전 API는 제거했습니다.
    - 0.x 정책에 맞춰 호환 별칭은 제공하지 않으며 호출부 전환 표를 Migration 문서에 기록했습니다.
-# Unity 6000.6 호환성 (2026-09-03)
+## Unity 6000.6 호환성 (2026-09-03)
 
 - `CoroutineRunner`는 Singleton 0.3의 `OnSingletonInitialize()`/`OnSingletonDispose()` 계약을
   사용하므로 package dependency도 `com.jeomseon.unity.singleton` `0.3.0`으로 동기화했습니다.
