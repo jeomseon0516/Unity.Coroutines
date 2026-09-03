@@ -2,6 +2,8 @@
 
 Coroutine runner and coroutine handle utilities for Unity.
 
+Requires Unity 6000.6.0f1 or newer and `com.jeomseon.unity.singleton` 0.3.0 or newer.
+
 ## WaitForSeconds cache
 
 `CoroutineHelper.WaitForSeconds` caches instructions with the same delay. Caching is unlimited by default.
