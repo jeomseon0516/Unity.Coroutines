@@ -20,7 +20,7 @@ Register the OpenUPM scoped registry once in your project's `Packages/manifest.j
     }
   ],
   "dependencies": {
-    "com.jeomseon.unity.coroutines": "0.4.1"
+    "com.jeomseon.unity.coroutines": "0.4.2"
   }
 }
 ```
@@ -30,7 +30,7 @@ Register the OpenUPM scoped registry once in your project's `Packages/manifest.j
 Enter the following URL in Unity Package Manager's `Install package from git URL`.
 
 ```text
-https://github.com/jeomseon0516/Unity.Coroutines.git#v0.4.1
+https://github.com/jeomseon0516/Unity.Coroutines.git#v0.4.2
 ```
 
 ## WaitForSeconds cache

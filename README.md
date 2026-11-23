@@ -20,7 +20,7 @@ Coroutine runner and coroutine handle utilities for Unity.
     }
   ],
   "dependencies": {
-    "com.jeomseon.unity.coroutines": "0.4.1"
+    "com.jeomseon.unity.coroutines": "0.4.2"
   }
 }
 ```
@@ -30,7 +30,7 @@ Coroutine runner and coroutine handle utilities for Unity.
 Unity Package Manager의 `Install package from git URL`에 다음 주소를 사용합니다.
 
 ```text
-https://github.com/jeomseon0516/Unity.Coroutines.git#v0.4.1
+https://github.com/jeomseon0516/Unity.Coroutines.git#v0.4.2
 ```
 
 ## 리팩토링 방침
