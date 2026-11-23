@@ -35,7 +35,7 @@ Coroutine 실행 호스트와 완료·취소·예외를 관찰하는 Operation �
     }
   ],
   "dependencies": {
-    "com.jeomseon.unity.coroutines": "0.4.1"
+    "com.jeomseon.unity.coroutines": "0.4.2"
   }
 }
 ```
@@ -43,7 +43,7 @@ Coroutine 실행 호스트와 완료·취소·예외를 관찰하는 Operation �
 또는 Package Manager의 **Install package from git URL**을 사용합니다:
 
 ```text
-https://github.com/jeomseon0516/Unity.Coroutines.git#v0.4.1
+https://github.com/jeomseon0516/Unity.Coroutines.git#v0.4.2
 ```
 
 ## API 사용과 상세 설명

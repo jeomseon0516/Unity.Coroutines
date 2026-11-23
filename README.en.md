@@ -35,7 +35,7 @@ Merge this into your project's `Packages/manifest.json`; preserve existing depen
     }
   ],
   "dependencies": {
-    "com.jeomseon.unity.coroutines": "0.4.1"
+    "com.jeomseon.unity.coroutines": "0.4.2"
   }
 }
 ```
@@ -43,7 +43,7 @@ Merge this into your project's `Packages/manifest.json`; preserve existing depen
 Or use **Install package from git URL** in Package Manager:
 
 ```text
-https://github.com/jeomseon0516/Unity.Coroutines.git#v0.4.1
+https://github.com/jeomseon0516/Unity.Coroutines.git#v0.4.2
 ```
 
 ## API usage and details
