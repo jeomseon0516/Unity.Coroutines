@@ -94,20 +94,21 @@ namespace Jeomseon.Unity.Coroutines.Editor
                 maxCountField.SetValueWithoutNotify(CoroutineCacheSettings.DefaultMaxCachedWaitForSecondsCount);
                 RefreshState(false, maxCountField, warningBox);
 
-                limitToggle.RegisterValueChangedCallback(_ => CreateAndApply(rootElement, limitToggle.value, maxCountField.value));
-                maxCountField.RegisterValueChangedCallback(_ => CreateAndApply(rootElement, limitToggle.value, maxCountField.value));
+                limitToggle.RegisterValueChangedCallback(_ => CreateAndApply(rootElement, content, limitToggle.value, maxCountField.value));
+                maxCountField.RegisterValueChangedCallback(_ => CreateAndApply(rootElement, content, limitToggle.value, maxCountField.value));
             }
 
-            // guiHandler는 매 프레임 에셋을 다시 읽었으므로, 창이 열린 동안 에셋이 외부에서 생성·삭제되면 다시 구성합니다.
-            bool hasSettings = settings;
-            rootElement.schedule.Execute(() =>
+            // 에셋이 외부에서 생성·삭제되거나 같은 경로에서 교체되면 다시 바인딩합니다.
+            var settingsId = settings ? settings.GetEntityId() : default;
+            content.schedule.Execute(() =>
             {
-                bool exists = AssetDatabase.LoadAssetAtPath<CoroutineCacheSettings>(CoroutineCacheSettings.AssetPath);
-                if (exists != hasSettings)
+                var currentSettings = AssetDatabase.LoadAssetAtPath<CoroutineCacheSettings>(CoroutineCacheSettings.AssetPath);
+                var currentSettingsId = currentSettings ? currentSettings.GetEntityId() : default;
+                if (currentSettingsId != settingsId)
                 {
                     BuildSettings(rootElement);
                 }
-            }).Every(500).Until(() => content.panel is null);
+            }).Every(500);
         }
 
         private static void RefreshState(bool isLimitEnabled, VisualElement maxCountField, VisualElement warningBox)
@@ -116,7 +117,8 @@ namespace Jeomseon.Unity.Coroutines.Editor
             warningBox.style.display = isLimitEnabled ? DisplayStyle.None : DisplayStyle.Flex;
         }
 
-        private static void CreateAndApply(VisualElement rootElement, bool isLimitEnabled, int maxCount)
+        private static void CreateAndApply(
+            VisualElement rootElement, VisualElement content, bool isLimitEnabled, int maxCount)
         {
             CoroutineCacheSettings settings = AssetDatabase.LoadAssetAtPath<CoroutineCacheSettings>(CoroutineCacheSettings.AssetPath);
             settings ??= CreateSettingsAsset();
@@ -126,8 +128,8 @@ namespace Jeomseon.Unity.Coroutines.Editor
             serializedSettings.ApplyModifiedProperties();
             CoroutineHelper.ResetWaitForSecondsCache();
 
-            // 값 변경 콜백 도중 자신을 제거하지 않도록 다음 틱에 다시 구성합니다.
-            rootElement.schedule.Execute(() => BuildSettings(rootElement));
+            // 다음 틱에 다시 구성하되 페이지를 떠나면 기존 콘텐츠의 예약 작업은 실행되지 않습니다.
+            content.schedule.Execute(() => BuildSettings(rootElement));
         }
 
         private static CoroutineCacheSettings CreateSettingsAsset()
